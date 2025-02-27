@@ -1,0 +1,122 @@
+@import '../fonts/fonts.css';
+
+:root {
+  --black-color: rgba(0, 0, 0, 0.98);
+  --white-color: #FFFFFF;
+  --input-color: rgba(0, 0, 0, 0.1);
+  --bg-color: rgba(255, 255, 255, 0.7);
+  --font-family: Circe, sans-serif;
+  --dynamic-vh: min-content;
+  --padding: 20px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: normal;
+  line-height: 1.2;
+  color: var(--black-color);
+  overflow-x: hidden;
+}
+
+.container {
+  background: url('../images/bg/371e5af9-0642-4b21-9812-ec508081ace4.jpg') center center / cover no-repeat;
+  width: 100%;
+  height: 100vh;
+}
+
+.widget {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.widget__inner {
+  background: var(--bg-color);
+  border-radius: 55px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  padding: 53px 70px;
+}
+
+.widget__search {
+  position: relative;
+  margin-bottom: 42px;
+}
+
+.widget__search input[type="text"] {
+  width: 620px;
+  padding: 18px 10px 18px 39px;
+  font-size: 30px;
+  line-height: 45px;
+  color: white;
+  font-family: var(--font-family);
+  background-color: rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 55px;
+  outline: none;
+}
+
+.widget__search ::placeholder {
+  color: white;
+  font-family: var(--font-family);
+}
+
+.search-button {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  background-color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-button svg {
+  width: 30px;
+  height: 30px;
+  fill: black;
+}
+
+.widget__title {
+  margin-bottom: 19px;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 60px;
+}
+
+.widget__weather-degree {
+  font-weight: 800;
+  font-size: 50px;
+  line-height: 75px;
+  margin-bottom: 8px;
+}
+
+.widget__cloudy {
+  max-width: 30px;
+  max-height: 30px;
+  margin-right: 10px;
+}
+
+.widget__ditails-item {
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,29 @@
+@font-face {
+  font-family: "Circe";
+  src:
+    url("./circe.woff2") format("woff2"),
+    url("./circe.woff") format("woff"),
+    url("./circe.ttf") format("truetype");
+  font-weight: 400; /* normal */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Circe";
+  src:
+    url("./circe_bold.woff2") format("woff2"),
+    url("./circe_bold.woff") format("woff"),
+    url("./circe_bold.ttf") format("truetype");
+  font-weight: 700; /* bold */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Circe";
+  src:
+    url("./circe_extrabold.woff2") format("woff2"),
+    url("./circe_extrabold.woff") format("woff"),
+    url("./circe_extrabold.ttf") format("truetype");
+  font-weight: 800; /* extra bold */
+  font-style: normal;
+}
