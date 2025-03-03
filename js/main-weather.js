@@ -78,3 +78,9 @@ function displayInformation(text) {
   weatherBlock.classList.add('none')
   infoGeolocation.innerHTML = text?.length ? text : 'Геолокация не поддерживается вашим браузером.'
 }
+
+document.querySelector('input').addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    getWeatherByCity();
+  }
+});

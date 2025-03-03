@@ -27,7 +27,7 @@ body {
 }
 
 .container {
-  background: url('../images/bg/371e5af9-0642-4b21-9812-ec508081ace4.jpg') center center / cover no-repeat;
+  background: url('../images/bg/bg.jpg') center center / cover no-repeat;
   width: 100%;
   height: 100vh;
 }
@@ -94,6 +94,10 @@ body {
   align-items: center;
 }
 
+.search-button:hover {
+  background-color: #f2f2f2;
+}
+
 .search-button svg {
   width: 30px;
   height: 30px;
@@ -128,4 +132,46 @@ body {
 .widget__info-geolocation {
   text-align: center;
   font-weight: 700;
+}
+
+
+@media screen and (max-width: 768px) {
+
+  body{
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .widget__inner {
+    border-radius: 35px;
+    padding: 15px 17px;
+    margin: 0 5px;
+  }
+
+  .widget__search {
+    margin-bottom: 20px;
+  }
+
+  .widget__search input[type="text"] {
+    width: 100%;
+    font-size: 20px;
+    border-radius: 35px;
+    padding: 10px 10px 10px 19px;
+  }
+
+  .widget__title {
+    margin-bottom: 10px;
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .widget__weather-degree {
+    font-size: 27px;
+    line-height: 36px;
+  }
+
+  .search-button {
+    width: 45px;
+    height: 45px;
+  }
 }
