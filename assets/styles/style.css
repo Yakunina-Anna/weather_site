@@ -32,6 +32,10 @@ body {
   height: 100vh;
 }
 
+.none {
+  display: none
+}
+
 .widget {
   display: flex;
   flex-direction: column;
@@ -119,4 +123,9 @@ body {
 .widget__ditails-item {
   display: flex;
   align-items: center;
+}
+
+.widget__info-geolocation {
+  text-align: center;
+  font-weight: 700;
 }
