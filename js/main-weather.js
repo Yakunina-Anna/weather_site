@@ -7,15 +7,20 @@ function getWeatherByCoords(latitude, longitude) {
   fetch(url)
     .then((response) => {
       if (!response.ok) {
-        throw new Error('Ошибка при запросе к API');
+        return response.json().then((errorData) => {
+          throw new Error(`${response.status}: ${errorData.message || 'Неизвестная ошибка'}`);
+        });
       }
       return response.json();
     })
     .then((data) => {
+      if (!data?.name) {
+        throw new Error('Получены некорректные данные от сервера.');
+      }
       updateWeather(data);
     })
     .catch((error) => {
-      console.error('Ошибка:', error);
+      displayInformation(`Произошла ошибка: ${error.message}`);
     });
 }
 
@@ -52,23 +57,43 @@ function getUserLocation() {
 }
 
 function getWeatherByCity() {
-  infoGeolocation.classList.add('none')
-  weatherBlock.classList.remove('none')
-  let input = document.querySelector('input');
-  const url = `http://api.openweathermap.org/geo/1.0/direct?q=${input.value}&appid=${apiKey}`
+  infoGeolocation.classList.add('none');
+  weatherBlock.classList.remove('none');
+
+  const input = document.querySelector('input');
+  if(!input.value) {
+    displayInformation('Пожалуйста, введите название города.');
+    return;
+  }
+  const url = `https://api.openweathermap.org/geo/1.0/direct?q=${input.value}&appid=${apiKey}`;
+
   fetch(url)
     .then((response) => {
       if (!response.ok) {
-        throw new Error('Ошибка при запросе к API');
+        return response.json().then((errorData) => {
+          throw new Error(`${response.status}: ${errorData.message || 'Неизвестная ошибка'}`);
+        });
       }
       return response.json();
     })
     .then((data) => {
-      getWeatherByCoords(data[0].lat, data[0].lon)
-
+      if (!data?.length ) {
+        throw new Error('Город не найден. Пожалуйста, проверьте правильность названия.');
+      }
+      getWeatherByCoords(data[0].lat, data[0].lon);
     })
     .catch((error) => {
-      displayInformation('Данный город не найден')
+      if (error.message.includes('401')) {
+        displayInformation('Ошибка авторизации. Проверьте ваш API-ключ.');
+      } else if (error.message.includes('404')) {
+        displayInformation('Город не найден. Пожалуйста, проверьте правильность названия.');
+      } else if (error.message.includes('500')) {
+        displayInformation('Произошла ошибка на сервере. Попробуйте позже.');
+      } else {
+        displayInformation(`Произошла ошибка: ${error.message}`);
+      }
+
+      console.error(error);
     });
 }
 
